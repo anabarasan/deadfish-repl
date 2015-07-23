@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+    <head>
+        <script src='deadfish.js'></script>
+        <script>
+            var input, output,
+                interpreter = new Deadfish();
+
+            window.onload = function () {
+                input = document.getElementById('input'),
+                output = document.getElementById('output');
+                input.focus();
+            };
+
+            function deadfish () {
+                output.innerHTML += interpreter.compute(input.value);
+                input.value = '';
+                input.focus();
+            }
+        </script>
+        <style>
+            body {
+                font-family:Lucida Console, Courier New, monospace;
+            }
+            
+            h2 {
+                text-align: center;
+            }
+            
+            #output {
+                height:500px;
+                overflow-y:scroll;
+                background:#000;
+                color:#0f0;
+            }
+            
+            #input {
+                margin:20px 0px;
+            }
+            
+            .w100p {
+                width:100%;
+                min-width:800px;
+            }
+            
+            error {
+                color:#f00;
+            }
+        </style>
+    </head>
+    <body>
+        <h2> Deadfish REPL </h2>
+        <div id="output" class="w100p"></div>
+        <input id="input" type="text" class="w100p" 
+            onkeypress="if (event.charCode==13) deadfish();"/>
+    </body>
+</html>
